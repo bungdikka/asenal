@@ -24,8 +24,36 @@ public class RedisUtil {
 	public String get(String key) {
 		return stringRedisTemplate.opsForValue().get(key);
 	}
+	
+	public Integer getInt(String key) {
+		String value = redisTemplate.opsForValue().get(key).toString();
+		if(value!=null) {
+			return Integer.parseInt(value);
+		}
+		return null;
+	}
 
 	public void set(String key, String value) {
 		stringRedisTemplate.opsForValue().set(key, value);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public long incrby(String key,long delta) {
+		return redisTemplate.opsForValue().increment(key, delta);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public long incr(String key) {
+		return redisTemplate.opsForValue().increment(key);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public long decr(String key) {
+		return redisTemplate.opsForValue().decrement(key);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public long decrby(String key,long delta) {
+		return redisTemplate.opsForValue().decrement(key, delta);
 	}
 }
