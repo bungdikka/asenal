@@ -28,6 +28,8 @@ public class RedisConfig {
     public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory factory) {
 		StringRedisTemplate template = new StringRedisTemplate();
         template.setConnectionFactory(factory);
+        template.setKeySerializer(new StringRedisSerializer());
+		template.setValueSerializer(new StringRedisSerializer());
         return template;
     }
 	
