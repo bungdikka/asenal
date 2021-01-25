@@ -1,0 +1,31 @@
+server:
+  port: 8083
+  servlet:    context-path: /context
+    
+spring:
+#  activemq:
+#    broker-url: tcp://localhost:61616
+#    user: admin
+#    password: admin
+    
+  datasource:
+    url: jdbc:mysql://localhost:3306/tiger_fastened_shut?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    
+#  redis:
+#    host: 127.0.0.1
+#    port: 6379
+
+  redis:
+    cluster:
+      nodes: 10.14.2.18:7000,10.14.2.18:7001,10.14.2.18:7002,10.14.2.18:7003,10.14.2.18:7004,10.14.2.18:7005
+    password: passwd123
+#    lettuce:#      pool:#        max-active: 8
+
+logging:
+  file:
+    path: /var/log/asenal
+    max-history: 365
+  
